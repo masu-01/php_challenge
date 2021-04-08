@@ -12,7 +12,7 @@
     $pdo = db_conn();  //そのなかの「db_conn（関数）」を呼び出す
 
 //  データ取得のためのSQL文を作成します
-    $stmt = $pdo->prepare("SELECT * FROM book_table WHERE author = '$keyword' "); 
+    $stmt = $pdo->prepare("SELECT * FROM book_table WHERE author like '%$keyword%' "); 
     $status = $stmt->execute();
 
 //  データ表示
