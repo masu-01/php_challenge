@@ -17,7 +17,17 @@
 
 
 // SQLエラー関数：
+    function sql_error($stmt){
+        $error = $stmt->errorInfo();
+        exit("SQLError:" . print_r($error, true));
+    }
 
+
+//リダイレクト関数: redirect($file_name)
+    function redirect($file_name){
+        header("Location: ".$file_name);
+        exit();
+    }
 
 
 ?>
