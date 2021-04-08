@@ -15,8 +15,9 @@
 // INSERT INTO テーブル名(カラム1, カラム2,...) VALUES(値1, 値2,...) ;
     $stmt = $pdo->prepare("INSERT INTO
                             book_table(id,up_id,title,author,url,memo,page,page_all,indate,up_date)
-                            VALUES(
-                                NULL,NULL,:title,:author,:url,:memo,'0',:page_all,sysdate(),NULL)
+                            SELECT 
+                                NULL,last_insert_id( ifnull(max(id), 0) + 1  ),:title,:author,:url,:memo,'0',:page_all,sysdate(),NULL
+                            FROM book_table
                         ");
 
 // バインド変数を用意する
@@ -25,6 +26,7 @@
     $stmt->bindValue(':url', $url, PDO::PARAM_STR);
     $stmt->bindValue(':memo', $memo, PDO::PARAM_STR);
     $stmt->bindValue(':page_all', $page_all, PDO::PARAM_INT);
+
 
 //  実行する
 //  成功したか失敗したかが「$status」に入る→成功したら「true」、失敗は「false」
@@ -37,7 +39,7 @@ if($status==false){
   exit("ErrorMessage:". print_r($error, true));
 }else{
   //成功したらindex.phpへリダイレクト
-  header('Location: index.php');
+  header('Location: select.php');
 }
 
 

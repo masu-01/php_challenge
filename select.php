@@ -17,7 +17,7 @@
         //Selectデータの数だけ自動でループしてくれる「FETCH_ASSOC」
         while( $result = $stmt->fetch(PDO::FETCH_ASSOC)){
             $view .= '<p>'
-                        . h($result['id'])  . '＝＝＝＝＝＝＝＝＝＝ '
+                        . '＝＝＝＝＝＝＝＝＝＝ '
                         . h($result['date'])  . '<br>'
                         .'<a href= "'. h($result['url']).  '" target="_blank">'. h($result['title'])  .'</a>　'
                         . h($result['author']).  '<br>'

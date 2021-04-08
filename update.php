@@ -44,8 +44,8 @@ if($status==false){
   $error = $stmt->errorInfo();
   exit("ErrorMessage:". print_r($error, true));
 }else{
-  //成功したらindex.phpへリダイレクト
-  header('Location: index.php');
+  //成功したらselect.phpへリダイレクト
+  header('Location: select.php');
 }
 
 
